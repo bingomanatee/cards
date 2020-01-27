@@ -15,7 +15,7 @@ const MODES = ['all', 'defined', 'undefined'];
 export default class Words extends Component {
   constructor(props) {
     super(props);
-    this.stream = wordsStore(siteStore.my.words);
+    this.stream = wordsStore(props, window.location.href);
     this.state = { ...this.stream.value };
   }
 
@@ -44,25 +44,28 @@ export default class Words extends Component {
           </Layer>
         ) : ''}
         <PageFrame>
-          <Heading color="neutral-1">Words</Heading>
 
-          <Box direction="row" justify="center" gap="medium" fill="horizontal">
-            {MODES.map((mode) => (
-              <Box
-                key={mode}
-                background={listMode === mode ? 'accent-2' : '#FFF'}
-                pad="small"
-                onClick={() => this.stream.do.setListMode(mode)}
-                direction="row"
-                round="small"
-              >
-                <Text>
-View
-                  {` ${mode} ` }
-Words
-                </Text>
-              </Box>
-            ))}
+          <Box direction="row" justify="between" align="center">
+            <Heading color="neutral-1">Words</Heading>
+
+            <Box direction="row" justify="center" gap="medium" fill="horizontal">
+              {MODES.map((mode) => (
+                <Box
+                  key={mode}
+                  background={listMode === mode ? 'accent-2' : '#FFF'}
+                  pad="small"
+                  onClick={() => this.stream.do.setListMode(mode)}
+                  direction="row"
+                  round="small"
+                >
+                  <Text>
+                    View
+                    {` ${mode} ` }
+                    Words
+                  </Text>
+                </Box>
+              ))}
+            </Box>
           </Box>
 
           {this.stream.do.sortedWords().map((item, index) => (
@@ -103,11 +106,11 @@ Words
                 <Box pad="2px" gridArea="icon">
                   <img src={item.definition ? '/img/wordOk.svg' : '/img/wordUndef.svg'} />
                 </Box>
-                <Box pad="2px" gridArea="label" direction="row-reverse" align="end">
-                  <Text textAlign="right">Word:</Text>
+                <Box pad="2px" gridArea="label" direction="row-reverse" align="start">
+                  <Text size="large" textAlign="right">Word</Text>
                 </Box>
                 <Box pad="2px" gridArea="word">
-                  <Text weight="bold">{item.label}</Text>
+                  <Text weight="bold" size="large">{item.label}</Text>
                 </Box>
                 <Box gridArea="defBtn" pad={0} fill="true" direction="column-reverse">
                   <Button plain={false} color="brand" margin="medium" onClick={() => this.stream.do.setActiveWord(item)}>
@@ -115,7 +118,7 @@ Words
                   </Button>
                 </Box>
                 <Box pad="2px" gridArea="def">
-                  <Text>{item.definition || '(undefined)'}</Text>
+                  <Text size="small">{item.definition || '(undefined)'}</Text>
                 </Box>
               </Grid>
             </ItemWrapper>

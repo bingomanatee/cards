@@ -2,7 +2,15 @@ import { Box } from 'grommet';
 import React from 'react';
 
 export default ({ children }) => (
-  <Box fill="horizontal" gap="large" pad="6px" border="light-4" round="1px" margin="6px">
+  <Box
+    fill="horizontal"
+    gap="large"
+    elevation="small"
+    pad="6px"
+    border={{ size: '1px', color: 'light-6' }}
+    round="1px"
+    margin="6px"
+  >
     {children}
   </Box>
 );

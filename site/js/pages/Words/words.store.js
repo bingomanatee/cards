@@ -1,17 +1,26 @@
 import { ValueStream } from '@wonderlandlabs/looking-glass-engine';
 import _ from 'lodash';
-import storeStream from '../../store/site.store';
+import siteStore from '../../store/site.store';
+const MODE_RE = /\?.*mode=([\w]+)/
+export default (props, url) => {
+  const { words } = siteStore.my;
 
-export default (words) => {
+  const { match } = props;
+  console.log('match:', match, url);
+  let mode = 'all';
+  if (MODE_RE.test(url)) {
+    mode = MODE_RE.exec(url)[1] || 'all';
+  }
+
   const WordsStore = new ValueStream('words')
     .property('words', Array.from(words.values()), 'array')
     .property('searchField', '', 'string')
-    .property('listMode', 'all')
+    .property('listMode', mode)
     .property('activeWord', null)
     .method('saveActiveWord', (s, word) => {
       s.do.clearActiveWord();
       s.do.setWords([...s.my.words]);
-      storeStream.do.updateWord(word);
+      siteStore.do.updateWord(word);
     }, true)
     .method('clearActiveWord', (s) => {
       s.do.setActiveWord(null);

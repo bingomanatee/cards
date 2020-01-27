@@ -1,5 +1,5 @@
 import {
-  Text, TextInput, Box, Button, FormField, Heading,
+  Text, TextInput, Box, Button, FormField, Heading, Layer,
 } from 'grommet';
 import {
   Formik, Form, Field, FieldArray, ErrorMessage,
@@ -34,25 +34,10 @@ export default class CreateList extends Component {
     // const { match } = props;
     super(props);
 
-    this.stream = betaStore(props);
-
-    this.state = { ...this.stream.state, newWord: '' };
+    this.state = { newWord: '', created: null };
 
     this.changeNewWord = this.changeNewWord.bind(this);
-  }
-
-  componentWillUnmount() {
-    if (this._sub) {
-      this._sub.unsubscribe();
-    }
-  }
-
-  componentDidMount() {
-    this._sub = this.stream.subscribe(({ state }) => {
-      this.setState(state);
-    }, (err) => {
-      console.log('create stream error: ', err);
-    });
+    this.notify = this.notify.bind(this);
   }
 
   get suggestions() {
@@ -67,6 +52,12 @@ export default class CreateList extends Component {
       .value();
   }
 
+  notify(list) {
+    this.setState({ created: list }, () => {
+      setTimeout(() => this.setState({ created: false }), 2000);
+    });
+  }
+
   changeNewWord(e) {
     const word = _.get(e, 'target.value', e);
     if (is.string(word)) { this.setState({ newWord: word }); }
@@ -75,6 +66,28 @@ export default class CreateList extends Component {
   render() {
     return (
       <PageFrame>
+        {this.state.created ? (
+          <Layer full margin="large" plain>
+            <Box
+              justify="between"
+              background="white"
+              border={{ size: '3px', color: 'status-ok' }}
+              gap="medium"
+              round="medium"
+              elevation="large"
+              pad="medium"
+            >
+              <Heading>Created New List</Heading>
+              <Text>
+You have created the list
+                  "
+                {_.get(this, 'state.created.label')}
+".
+              </Text>
+              <Button primary plain={false} onClick={() => this.notify(false)}>OK</Button>
+            </Box>
+          </Layer>
+        ) : ''}
         <Heading color="accent-3">Create List</Heading>
         <Text margin="medium"> Define a set of words you would like to learn</Text>
         <Frame>
@@ -92,18 +105,18 @@ export default class CreateList extends Component {
                 if (values.words.length < 4) {
                   errors.words = 'a minimum of 4 words required';
                 }
-                console.log('validate:', errors, values);
                 return errors;
               }}
               onSubmit={(values, { setSubmitting, resetForm }) => {
+                console.log('============== smbmitting to newList: ', values);
                 siteStore.do.newList(values);
-                this.stream.do.reset();
+                this.notify(values);
                 setSubmitting(false);
                 resetForm({ label: '', words: [] });
               }}
             >
               {({
-                handleSubmit, handleChange, handleBlur, values, errors, resetForm,
+                values,
               }) => (
                 <Form>
                   <FormSection>
@@ -146,7 +159,7 @@ export default class CreateList extends Component {
                               value={this.state.newWord || ''}
                               suggestions={this.suggestions}
                               onSelect={({ suggestion }) => {
-                                this.changeNewWord(suggestion);a
+                                this.changeNewWord(suggestion);
                               }}
                               onChange={this.changeNewWord}
                               flex={1}

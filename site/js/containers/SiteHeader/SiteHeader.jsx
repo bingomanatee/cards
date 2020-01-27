@@ -7,6 +7,7 @@ export default class SiteHeader extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { ...siteStore.value };
+    this.viewUndefined = this.viewUndefined.bind(this);
   }
 
   componentDidMount() {
@@ -21,8 +22,12 @@ export default class SiteHeader extends PureComponent {
     this._sub.unsubscribe();
   }
 
+  viewUndefined() {
+    this.props.history.push('/words?mode=undefined');
+  }
+
   render() {
-    const { undefinedWordCount } = this.state;
+    const { undefinedWordCount, listCount } = this.state;
     return (
       <Box
         direction="row"
@@ -48,14 +53,20 @@ export default class SiteHeader extends PureComponent {
         </Box>
         <Box direction="row-reverse" fill align="center" className="nav">
           {undefinedWordCount ? (
-            <Button margin="small" primary color="accent-4" plain={false}>
+            <Button
+              margin="small"
+              primary
+              color="accent-4"
+              plain={false}
+              onClick={this.viewUndefined}
+            >
               {undefinedWordCount}
               {' '}
               Undefined words
             </Button>
           ) : ''}
           <Button margin="small" plain={false}>
-            {siteStore.do.listCount()}
+            {listCount}
             {' '}
             Word Lists
           </Button>

@@ -517,22 +517,22 @@ export default {
         small: {
           size: '22px',
           height: '28px',
-          maxWidth: '2000px'
+          maxWidth: '2000px',
         },
         medium: {
           size: '26px',
           height: '32px',
-          maxWidth: '2000px'
+          maxWidth: '2000px',
         },
         large: {
           size: '34px',
           height: '40px',
-          maxWidth: '2000px'
+          maxWidth: '2000px',
         },
         xlarge: {
           size: '42px',
           height: '48px',
-          maxWidth: '2000px'
+          maxWidth: '2000px',
         },
       },
       4: {

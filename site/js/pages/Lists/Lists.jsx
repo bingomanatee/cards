@@ -1,5 +1,5 @@
 import {
-  Text, TextInput, Box, Button, Heading, List,
+  Text, TextInput, Box, Button, Heading, List, Layer,
 } from 'grommet';
 import _ from 'lodash';
 import React, { Component } from 'react';
@@ -14,14 +14,17 @@ export default class Lists extends Component {
 
     this.stream = siteStore;
 
-    this.state = { showWordsFor: null, ...this.stream.value };
+    this.state = { showWordsFor: null, toDelete: null, ...this.stream.value };
 
     this.goCreate = this.goCreate.bind(this);
     this.showWordsFor = this.showWordsFor.bind(this);
+    this.delete = this.delete.bind(this);
+    this.doDelete = this.doDelete.bind(this);
     this.quiz = this.quiz.bind(this);
   }
 
   showWordsFor(list) {
+    if (list === this.state.showWordsFor) list = null;
     this.setState({ showWordsFor: list });
   }
 
@@ -53,11 +56,48 @@ export default class Lists extends Component {
     this.props.history.push(`/list/${encodeURIComponent(list.label)}`);
   }
 
+  delete(list) {
+    this.setState({ toDelete: list });
+  }
+
+  doDelete() {
+    if (this.state.toDelete) {
+      siteStore.do.deleteList(this.state.toDelete);
+      this.setState({ toDelete: null });
+    }
+  }
+
   render() {
-    const { lists, showWordsFor } = this.state;
-    console.log('lists', lists);
+    const { lists, showWordsFor, toDelete } = this.state;
+    console.log('---- lists', lists);
     return (
       <PageFrame>
+        {toDelete ? (
+          <Layer full margin="large" plain>
+            <Box
+              justify="between"
+              background="white"
+              border={{ size: '3px', color: 'status-warning' }}
+              gap="medium"
+              round="medium"
+              elevation="large"
+              pad="medium"
+            >
+              <Heading>
+Delete list "
+                {toDelete.label}
+"?
+              </Heading>
+              <Text textAlgin="center" size="large">
+                permanently delete this list from memory? The words will not be deleted.
+              </Text>
+              <Box direction="row" justify="around">
+                <Button primary color="status-warning" plain={false} onClick={() => this.doDelete()}>Delete List</Button>
+                <Button primary plain={false} onClick={() => this.delete()}>Cancel</Button>
+              </Box>
+            </Box>
+          </Layer>
+        ) : ''}
         <Heading color="neutral-1">Word Lists</Heading>
         <Button margin="small" primary plain={false} onClick={this.goCreate}>Create New List</Button>
         {Array.from(lists.values()).map((list) => (
@@ -76,7 +116,8 @@ export default class Lists extends Component {
                   {' '}
                 </Text>
               </Box>
-              <Button plain={false} onClick={() => this.showWordsFor(list)}>Show All Words</Button>
+              <Button plain={false} onClick={() => this.showWordsFor(list)}>Words</Button>
+              <Button margin="small" plain onClick={() => this.delete(list)} icon={<img src="/img/delete.svg" />} />
             </Box>
             {_.get(showWordsFor, 'label') === list.label ? <List data={list.words} /> : ''}
           </ItemWrapper>

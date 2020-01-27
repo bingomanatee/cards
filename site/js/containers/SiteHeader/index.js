@@ -1,5 +1,4 @@
+import { withRouter } from 'react-router-dom';
 import SiteHeaderContainer from './SiteHeader';
 
-// @TODO: any bindings / hoc
-
-export default SiteHeaderContainer;
+export default withRouter(SiteHeaderContainer);

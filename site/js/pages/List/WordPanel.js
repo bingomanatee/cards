@@ -4,6 +4,7 @@ import {
 } from 'grommet';
 import styled from 'styled-components';
 import _ from 'lodash';
+import is from 'is';
 import wordPanelStoreFactory from './wordPanel.store';
 
 const ImgBtn = styled.div`
@@ -18,6 +19,11 @@ position: absolute;
 left: 5rem;
 bottom: 5rem;
 `;
+
+function wordSize(w) {
+  if (is.string(w)) return w.length;
+  return 0;
+}
 
 export default class WordPanel extends Component {
   constructor(props) {
@@ -37,7 +43,7 @@ export default class WordPanel extends Component {
     this._sub = this.stream.subscribe(({ value }) => {
       this.setState(value);
     }, (err) => {
-      console.log('Word panel stream error: ', err);
+      console.log('WordList panel stream error: ', err);
     });
   }
 
@@ -68,10 +74,10 @@ export default class WordPanel extends Component {
         >
           {done ? children : (
             <>
-              <Heading textAlign="center" size="xlarge">{word}</Heading>
+              <Heading textAlign="center" size={wordSize(word) < 30 ? 'xlarge' : 'medium'}>{word}</Heading>
 
               {(reveal && definition) ? (
-                <Text size="xlarge" margin="large">{definition}</Text>
+                <Text size={wordSize(definition) > 200 ? 'medium' : 'large'} margin="small">{definition}</Text>
               ) : ''}
 
               {definition ? (
