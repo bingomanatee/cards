@@ -6,6 +6,7 @@ export default ({ children }) => (
     fill="horizontal"
     gap="large"
     elevation="small"
+    background="white"
     pad="6px"
     border={{ size: '1px', color: 'light-6' }}
     round="1px"

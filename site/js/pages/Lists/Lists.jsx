@@ -82,6 +82,8 @@ export default class Lists extends Component {
               round="medium"
               elevation="large"
               pad="medium"
+              direction="column"
+              align="center"
             >
               <Heading>
 Delete list "
@@ -91,14 +93,14 @@ Delete list "
               <Text textAlgin="center" size="large">
                 permanently delete this list from memory? The words will not be deleted.
               </Text>
-              <Box direction="row" justify="around">
+              <Box direction="row" justify="around" gap="large">
                 <Button primary color="status-warning" plain={false} onClick={() => this.doDelete()}>Delete List</Button>
                 <Button primary plain={false} onClick={() => this.delete()}>Cancel</Button>
               </Box>
             </Box>
           </Layer>
         ) : ''}
-        <Heading color="neutral-1">Word Lists</Heading>
+        <Heading color="accent-1">Word Lists</Heading>
         <Button margin="small" primary plain={false} onClick={this.goCreate}>Create New List</Button>
         {Array.from(lists.values()).map((list) => (
           <ItemWrapper key={list.label}>

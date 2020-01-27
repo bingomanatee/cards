@@ -46,7 +46,7 @@ export default class Words extends Component {
         <PageFrame>
 
           <Box direction="row" justify="between" align="center">
-            <Heading color="neutral-1">Words</Heading>
+            <Heading color="accent-1">Words</Heading>
 
             <Box direction="row" justify="center" gap="medium" fill="horizontal">
               {MODES.map((mode) => (

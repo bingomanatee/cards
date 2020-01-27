@@ -28,10 +28,10 @@ export default class Main extends PureComponent {
             <Box gridArea="header">
               <SiteHeader />
             </Box>
-            <Box gridArea="nav">
+            <Box gridArea="nav" background="brand">
               <Navigation />
             </Box>
-            <Box gridArea="main">
+            <Box gridArea="main" background="brand">
               <Content>
                 <Switch>
                   <Route path="/" exact component={Home} />

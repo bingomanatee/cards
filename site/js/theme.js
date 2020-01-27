@@ -34,7 +34,7 @@ export default {
       white: '#FFFFFF',
       'accent-1': '#75bc30',
       'accent-2': '#7a1d1d',
-      'accent-3': '#662289',
+      'accent-3': '#ac22cf',
       'accent-4': '#aa002d',
       'dark-1': '#333333',
       'dark-2': '#555555',

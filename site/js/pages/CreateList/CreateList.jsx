@@ -88,7 +88,7 @@ You have created the list
             </Box>
           </Layer>
         ) : ''}
-        <Heading color="accent-3">Create List</Heading>
+        <Heading color="accent-1">Create List</Heading>
         <Text margin="medium"> Define a set of words you would like to learn</Text>
         <Frame>
           <Box pad="small" border={{ size: '3px', color: 'accent-1' }} round="large">

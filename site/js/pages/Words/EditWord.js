@@ -74,8 +74,8 @@ export default class EditWord extends Component {
             areas={[
               {
                 name: 'head',
-                end: [0, 2],
                 start: [0, 0],
+                end: [2, 0],
               },
               {
                 name: 'dict',
@@ -100,7 +100,7 @@ export default class EditWord extends Component {
             ]}
           >
             <Box gridArea="head">
-              <Heading color="accent-3">
+              <Heading color="accent-1">
                 Editing Word &quot;
                 {word.label}
                 &quot;
