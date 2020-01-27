@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>home</title>
+    <desc>Created with Sketch.</desc>
+    <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="arrow" transform="translate(24.500000, 19.000000) rotate(-90.000000) translate(-24.500000, -19.000000) translate(9.000000, 6.000000)" fill="#FFFFFF">
+            <polygon id="Path-2" points="7.24791113 0 24 16.5840619 14.5190567 26 7.27114559 26 16.7520889 16.5840619 0 0"></polygon>
+            <polygon id="Path-2-Copy" points="14.2479111 0 31 16.5840619 21.5190567 26 18.2711456 26 27.7520889 16.5840619 11 0"></polygon>
+        </g>
+        <rect id="Rectangle" fill="#FFFFFF" x="24" y="18" width="8" height="21"></rect>
+        <rect id="Rectangle-Copy" fill="#FFFFFF" x="11" y="39" width="26" height="6"></rect>
+    </g>
+</svg>

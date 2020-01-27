@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="29px" viewBox="0 0 26 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>replay-sm</title>
+    <desc>Created with Sketch.</desc>
+    <g id="replay-sm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="replay" transform="translate(0.000000, 2.000000)" fill="#FFFFFF">
+            <path d="M14.2737756,3 C20.1911122,3 24.9880613,7.70101013 24.9880613,13.5 C24.9880613,19.2989899 20.1911122,24 14.2737756,24 C8.70084348,24 4.12167524,19.8302872 3.60751464,14.5006804 L7.20337747,14.5008454 C7.69888095,17.8927274 10.6756338,20.5 14.2737756,20.5 C18.2186667,20.5 21.4166327,17.3659932 21.4166327,13.5 C21.4166327,9.63400675 18.2186667,6.5 14.2737756,6.5 C11.545634,6.5 9.17471655,7.9988691 7.97169723,10.2021468 L6.56054055,8.78 L11.8693427,3.26543465 C12.6422696,3.09175306 13.4470889,3 14.2737756,3 Z" id="Combined-Shape"></path>
+            <g id="arrow" transform="translate(7.908163, 6.500000) scale(-1, 1) translate(-7.908163, -6.500000) ">
+                <polygon id="Path-2" points="3.69791384 0 12.244898 8.29203097 7.407682 13 3.70976816 13 8.54698412 8.29203097 0 0"></polygon>
+                <polygon id="Path-2-Copy" points="7.26934241 0 15.8163265 8.29203097 10.9791106 13 9.32201306 13 14.159229 8.29203097 5.6122449 0"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

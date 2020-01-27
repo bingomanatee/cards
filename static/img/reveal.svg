@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="77px" height="54px" viewBox="0 0 77 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>reveal</title>
+    <desc>Created with Sketch.</desc>
+    <g id="reveal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <ellipse id="Oval" fill="#2A3A4C" cx="38.5" cy="27" rx="38.5" ry="27"></ellipse>
+        <ellipse id="Oval" fill="#D8D8D8" cx="38.5" cy="27" rx="31.5" ry="22"></ellipse>
+        <ellipse id="Oval-Copy" fill="#2A3A4C" cx="39" cy="28" rx="17" ry="19"></ellipse>
+        <path d="M38.48,22 C41,22 43,20.1666667 43,17.5416667 C43,14.9166667 41,13 38.48,13 C35.96,13 34,14.9166667 34,17.5416667 C34,20.1666667 35.96,22 38.48,22 Z M43,41 L43,23 L36,23 L36,41 L43,41 Z" id="i" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>
